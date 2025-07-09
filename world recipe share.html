@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Recipe Share</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #fdf6f0;
+        }
+
+        header {
+            background: #ff7043;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav {
+            background: #ffccbc;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 1em;
+        }
+
+        nav button {
+            padding: 0.5em 1em;
+            border: none;
+            background: #ff7043;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .container {
+            display: none;
+            padding: 1em;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .recipe {
+            background: white;
+            padding: 1em;
+            margin: 1em 0;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .gallery img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        form {
+            background: #fff3e0;
+            padding: 1em;
+            border-radius: 10px;
+            margin-top: 1em;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.5em;
+            margin: 0.5em 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button[type="submit"] {
+            background: #ff7043;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>🌍 World Recipe Share</h1>
+        <p>Explore and share delicious recipes from all over the world!</p>
+    </header>
+
+    <nav>
+        <button onclick="showSection('italy')">Italy</button>
+        <button onclick="showSection('france')">France</button>
+        <button onclick="showSection('bangladesh')">Bangladesh</button>
+        <button onclick="showSection('gallery')">Photo Gallery</button>
+        <button onclick="showSection('submit')">Submit Recipe / Photo</button>
+    </nav>
+
+    <div id="italy" class="container active">
+        <h2>Italian Recipes 🇮🇹</h2>
+        <div class="recipe">
+            <h3>Spaghetti Carbonara</h3>
+            <p>A classic Roman pasta dish made with eggs, cheese, pancetta, and pepper.</p>
+        </div>
+    </div>
+
+    <div id="france" class="container">
+        <h2>French Recipes 🇫🇷</h2>
+        <div class="recipe">
+            <h3>Coq au Vin</h3>
+            <p>Chicken slowly braised with wine, mushrooms, onions, and garlic.</p>
+        </div>
+    </div>
+
+    <div id="bangladesh" class="container">
+        <h2>Bangladeshi Recipes 🇧🇩</h2>
+        <div class="recipe">
+            <h3>Beef Tehari</h3>
+            <p>Aromatic rice dish cooked with beef, mustard oil, and rich spices.</p>
+        </div>
+    </div>
+
+    <div id="gallery" class="container">
+        <h2>Photo Gallery 📷</h2>
+        <div class="gallery" id="photoGallery">
+            <img src="https://via.placeholder.com/200x150" alt="Dish 1">
+            <img src="https://via.placeholder.com/200x150" alt="Dish 2">
+            <img src="https://via.placeholder.com/200x150" alt="Dish 3">
+        </div>
+    </div>
+
+    <div id="submit" class="container">
+        <h2>Submit Your Recipe or Photo ✍️</h2>
+        <form onsubmit="handleSubmit(event)">
+            <input type="text" id="username" placeholder="Your Username (no password needed)" required>
+            <input type="text" id="title" placeholder="Recipe Title or Photo Caption" required>
+            <textarea id="details" placeholder="Recipe details or photo description" rows="5" required></textarea>
+            <input type="url" id="imageUrl" placeholder="Image URL (for photo gallery, optional)">
+            <button type="submit">Submit</button>
+        </form>
+        <p id="submissionMessage"></p>
+    </div>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.container').forEach(sec => {
+                sec.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const title = document.getElementById('title').value;
+            const details = document.getElementById('details').value;
+            const imageUrl = document.getElementById('imageUrl').value;
+
+            const message = document.getElementById('submissionMessage');
+            message.textContent = `Thank you, ${username}! Your submission has been received.`;
+
+            if (imageUrl) {
+                const img = document.createElement('img');
+                img.src = imageUrl;
+                img.alt = title;
+                document.getElementById('photoGallery').appendChild(img);
+            }
+        }
+    </script>
+</body>
+
+</html>
