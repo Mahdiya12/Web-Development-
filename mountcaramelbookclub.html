@@ -13,6 +13,9 @@
 
         header {
             background-color: #ffb3c6;
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         nav {
@@ -20,6 +23,8 @@
             position: sticky;
             top: 0px;
             z-index: 2;
+            display:flex;
+            justify-content: center;
         }
 
         #intro {
@@ -94,6 +99,9 @@
             margin: 100px;
             width: 400px;
             box-shadow: 6px 0px 21px -3px #333333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
             
 
@@ -161,6 +169,9 @@
          
          footer{
             padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
          }
 
          #bestseller h2{
@@ -174,7 +185,18 @@
          #bookreviews p{
             position: relative;
             left: 40%;
-            border-image-width: 400px;
+            width: 400px;
+         }
+
+         #teachers{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+         }
+
+         nav ul{
+            display: flex;
+            justify-content: space-between;
          }
         
     </style>
@@ -235,7 +257,7 @@
             </div>
 
             <!-- content 2 -->
-            <div id="book reviews" class="main-section-content">
+            <div id="bookreviews" class="main-section-content">
                 <h2>Book Reviews</h2>
 
                 <h3>Harry Potter</h3>
